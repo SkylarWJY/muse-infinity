@@ -53,24 +53,10 @@ collider-grounded, and rendered at native metric scale.*
 
 ### Act I — One question opens the gate
 
-Type (or pick) the question you actually carry. The museum reads it and starts
-curating: palette, worlds, collection, companions.
+Type the question you actually carry — *"What makes a life meaningful?"* — and
+stop. That is the only input the museum ever asks for.
 
-### Act II — Choose your world and your minds
-
-<div align="center">
-<table><tr>
-<td><img src="assets/thumbs/grand-conservatory-with-lush-gardens.jpg" width="170" alt="Glass Conservatory"/></td>
-<td><img src="assets/thumbs/mexican-courtyard-bedroom-fantasy.jpg" width="170" alt="Mexican Courtyard"/></td>
-<td><img src="assets/thumbs/dreamlike-coastal-villa-gardens.jpg" width="170" alt="Coastal Villa"/></td>
-<td><img src="assets/thumbs/sunlit-palace-gardens.jpg" width="170" alt="Sunlit Gardens"/></td>
-</tr></table>
-</div>
-
-Six Marble worlds sit on the chooser — and **three more are deliberately hidden**:
-finale-only spaces, reserved as the exclusive destinations your philosophy can unlock.
-Then invite up to three companions from seven masters, each built from documented
-public-domain portraits into a full 3D figure via **Tripo**.
+### Act II — Choose the minds who walk with you
 
 <div align="center">
 <img src="assets/generated/interactions/companions-at-the-bedroom-v1.png" alt="Masters standing with the visitor inside a generated world" width="82%" />
@@ -79,14 +65,57 @@ public-domain portraits into a full 3D figure via **Tripo**.
 and are clickable.*
 </div>
 
-### Act III — Walk. Really walk.
+Invite up to three of seven masters. Each is built from a documented public-domain
+portrait into a full 3D figure via **Tripo**, and each carries an authored lens that
+makes their reading of a painting genuinely their own.
 
-Drag to look, `W A S D` to move. The Marble world streams in behind a dark veil (no
-placeholder flash), your feet snap to the real collider ground, and open-access
-masterpieces from the Art Institute of Chicago hang on genuine display walls,
-each with title, date, source and rights.
+### Act III — The museum curates itself, visibly
 
-### Act IV — Every painting is an encounter
+GPT reads your question and answers with a themed exhibition title, three chapter
+names, and a preview of the route it has planned. Curation is something you watch
+happen, not something the interface claims.
+
+### Act IV — Eight worlds, one continuous walk
+
+<div align="center">
+<table><tr>
+<td><img src="assets/thumbs/grand-conservatory-with-lush-gardens.jpg" width="170" alt="Glass Conservatory"/></td>
+<td><img src="assets/thumbs/enchanted-water-garden-sanctuary.jpg" width="170" alt="Water Garden"/></td>
+<td><img src="assets/thumbs/dreamlike-coastal-villa-gardens.jpg" width="170" alt="Coastal Villa"/></td>
+<td><img src="assets/thumbs/van-gogh-inspired-gallery-interior.jpg" width="170" alt="Van Gogh studio"/></td>
+</tr><tr>
+<td><img src="assets/thumbs/sunlit-palace-gardens.jpg" width="170" alt="Sunlit Gardens"/></td>
+<td><img src="assets/thumbs/mexican-courtyard-bedroom-fantasy.jpg" width="170" alt="Mexican Courtyard"/></td>
+<td><img src="assets/thumbs/yellow-polka-dot-infinity-room.jpg" width="170" alt="Infinity Dot Room"/></td>
+<td><img src="assets/thumbs/fantasy-realm-of-shimmering-spheres.jpg" width="170" alt="Shimmering Spheres"/></td>
+</tr></table>
+</div>
+
+The exhibition is a **spine of eight generated worlds**, walked in order — not a menu.
+Drag to look, `W A S D` to move; a **guided-tour HUD** names your next stop, points at
+it and counts the metres down, so you are led rather than left wandering. The Marble
+world streams in behind a dark veil (no placeholder flash) and your feet snap to the
+real collider ground.
+
+**Every world hangs its own artist.** The walls are not decoration reused from room to
+room: forty-two public-domain Art Institute works, globally deduplicated, so no
+painting is ever seen twice in the museum.
+
+| Chapter | World | The collection on its walls |
+|---|---|---|
+| 01 · ARRIVAL | Glass Conservatory | Camille Pissarro |
+| 02 · QUESTION | Floral Palace | Pierre-Auguste Renoir |
+| 03 · PERCEPTION | Water Garden | Claude Monet |
+| 04 · INVENTION | Coastal Villa | Paul Cézanne |
+| 05 · INTENSITY | Van Gogh Studio | Vincent van Gogh |
+| 06 · TRANSFORMATION | Sunlit Gardens | Georges Seurat |
+| 07 · IDENTITY | Mexican Courtyard | Mary Cassatt |
+| 08 · INFINITY | Infinity Dot Room | Vasily Kandinsky |
+| 09 · ANSWER | *your dream world* | chosen by your philosophy |
+
+The ninth world is not on that walk. It opens only after the closing roundtable.
+
+### Act V — Every painting is an encounter
 
 Click a painting and a **visual-novel dialogue** rises: a master opens *in
 character* about this exact work (typewriter text, skippable), you choose your
@@ -97,7 +126,7 @@ AI-interpretation disclaimer — and each reading re-lights the room through a
 constrained effect vocabulary. Click a **master** instead and you can ask them
 anything; all three answer in their own voice, never each other's.
 
-Flip the **SOUND** toggle and it plays like a game: each master speaks with a
+The **SOUND** toggle is on from the first page, and it plays like a game: each master speaks with a
 distinct MiniMax-cast voice (Socrates is a deep British gentleman; Van Gogh burns),
 while a per-act public-domain score — Mussorgsky's *Promenade* for the overture,
 Debussy for the gallery, Satie for the salon — **ducks under every spoken line and
@@ -107,14 +136,14 @@ swells back after it**.
 <img src="assets/generated/museum-salon-romantic-v2.png" alt="The salon where the masters gather" width="82%" />
 </div>
 
-### Act V — The roundtable that read your walk
+### Act VI — The roundtable that read your walk
 
 Your answers feed a philosophy meter (perception / emotion / invention). At the
 end, the masters hold a closing roundtable **about your actual trajectory** — it
 quotes the paintings you stopped at and the questions you asked, refuses to invent
 stops you never made, and names the world your walk built. One click later you are
-standing inside it: a finale-only Marble world the chooser never offered, hung with
-a collection matched to your philosophy.
+standing inside it: a finale-only Marble world that is not on the eight-stop walk,
+hung with a collection matched to your philosophy.
 
 <div align="center">
 <table><tr>
@@ -131,6 +160,7 @@ a collection matched to your philosophy.
 
 | | |
 |---|---|
+| 🖼️ **A collection, not wallpaper** | Forty-two public-domain Art Institute works, one artist cast per world, globally deduplicated — **no painting appears twice in the museum**. Every record keeps title, date, source URL and rights, and the live open-access fetch upgrades each wall at runtime without ever being required. |
 | 🌍 **Real generated worlds, walked natively** | Ten World Labs Marble worlds rendered at **native metric scale** (no bounding-box renormalisation): baked transforms, collider-driven ground snapping and walk bounds, per-world tuning. The official Marble viewer look — but playable. |
 | 🎭 **Three minds, not one chatbot** | One question returns **three parallel readings** in a single strict-JSON LLM call — per-master authored lenses, quarantined vocabularies (Monet may not borrow Van Gogh's words), positional speaker reconciliation. Divergence is engineered, not hoped for. |
 | 🗣️ **A cast, not a TTS** | Seven masters, seven MiniMax voices chosen from the live voice catalogue. Sentence-segmented narration advances only on the previous segment's `ended` event — no mid-line cut-offs — with one-segment prefetch (no dead air) and a watchdog (no stuck queue). |
@@ -190,9 +220,10 @@ npm test           # API contracts + public-surface/secret boundaries
 | `MINIMAX_API_KEY` | Per-master voice narration behind the SOUND toggle |
 | *(nothing)* | The full walk still works — with clearly labeled local fallbacks |
 
-**Controls:** drag to look · `W A S D` walk · click paintings & masters ·
-**SOUND** toggle (top right) for voices + score · `1–7` jump between acts ·
-`R` reset · `P` performance tier.
+**Controls:** drag to look · `W A S D` walk · click paintings & masters · scene dots
+to move along the spine · **SOUND** toggle (top right, on by default — the score
+starts on your first click, as the autoplay policy requires) · `1`…`9`,`0` step
+through the ten acts · `R` reset · `P` performance tier.
 
 ## 🛡️ Rights & representation
 
