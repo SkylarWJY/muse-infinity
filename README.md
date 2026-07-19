@@ -78,17 +78,22 @@ happen, not something the interface claims.
 ### Act IV — Eight worlds, one continuous walk
 
 <div align="center">
-<table><tr>
-<td><img src="assets/thumbs/grand-conservatory-with-lush-gardens.jpg" width="170" alt="Glass Conservatory"/></td>
-<td><img src="assets/thumbs/enchanted-water-garden-sanctuary.jpg" width="170" alt="Water Garden"/></td>
-<td><img src="assets/thumbs/dreamlike-coastal-villa-gardens.jpg" width="170" alt="Coastal Villa"/></td>
-<td><img src="assets/thumbs/van-gogh-inspired-gallery-interior.jpg" width="170" alt="Van Gogh studio"/></td>
-</tr><tr>
-<td><img src="assets/thumbs/sunlit-palace-gardens.jpg" width="170" alt="Sunlit Gardens"/></td>
-<td><img src="assets/thumbs/mexican-courtyard-bedroom-fantasy.jpg" width="170" alt="Mexican Courtyard"/></td>
-<td><img src="assets/thumbs/yellow-polka-dot-infinity-room.jpg" width="170" alt="Infinity Dot Room"/></td>
-<td><img src="assets/thumbs/fantasy-realm-of-shimmering-spheres.jpg" width="170" alt="Shimmering Spheres"/></td>
-</tr></table>
+<table>
+<tr>
+<td align="center"><img src="assets/thumbs/grand-conservatory-with-lush-gardens.jpg" width="168" alt="Glass Conservatory"/><br/><sub><b>01 · ARRIVAL</b><br/>Glass Conservatory</sub></td>
+<td align="center"><img src="assets/thumbs/elegant-floral-palace-interior.jpg" width="168" alt="Floral Palace"/><br/><sub><b>02 · QUESTION</b><br/>Floral Palace</sub></td>
+<td align="center"><img src="assets/thumbs/enchanted-water-garden-sanctuary.jpg" width="168" alt="Water Garden"/><br/><sub><b>03 · PERCEPTION</b><br/>Water Garden</sub></td>
+<td align="center"><img src="assets/thumbs/dreamlike-coastal-villa-gardens.jpg" width="168" alt="Coastal Villa"/><br/><sub><b>04 · INVENTION</b><br/>Coastal Villa</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="assets/thumbs/van-gogh-inspired-gallery-interior.jpg" width="168" alt="Van Gogh Studio"/><br/><sub><b>05 · INTENSITY</b><br/>Van Gogh Studio</sub></td>
+<td align="center"><img src="assets/thumbs/sunlit-palace-gardens.jpg" width="168" alt="Sunlit Gardens"/><br/><sub><b>06 · TRANSFORMATION</b><br/>Sunlit Gardens</sub></td>
+<td align="center"><img src="assets/thumbs/mexican-courtyard-bedroom-fantasy.jpg" width="168" alt="Mexican Courtyard"/><br/><sub><b>07 · IDENTITY</b><br/>Mexican Courtyard</sub></td>
+<td align="center"><img src="assets/thumbs/yellow-polka-dot-infinity-room.jpg" width="168" alt="Infinity Dot Room"/><br/><sub><b>08 · INFINITY</b><br/>Infinity Dot Room</sub></td>
+</tr>
+</table>
+
+*The eight stops of the walk, in order.*
 </div>
 
 The exhibition is a **spine of eight generated worlds**, walked in order — not a menu.
@@ -111,9 +116,14 @@ painting is ever seen twice in the museum.
 | 06 · TRANSFORMATION | Sunlit Gardens | Georges Seurat |
 | 07 · IDENTITY | Mexican Courtyard | Mary Cassatt |
 | 08 · INFINITY | Infinity Dot Room | Vasily Kandinsky |
-| 09 · ANSWER | *your dream world* | chosen by your philosophy |
 
-The ninth world is not on that walk. It opens only after the closing roundtable.
+<div align="center">
+<img src="assets/thumbs/fantasy-realm-of-shimmering-spheres.jpg" width="380" alt="Shimmering Spheres — the ninth world"/>
+
+**09 · ANSWER — the ninth world**
+*Not on the walk. It opens only after the closing roundtable names it,*
+*and the collection hanging inside is the one your philosophy chose.*
+</div>
 
 ### Act V — Every painting is an encounter
 
