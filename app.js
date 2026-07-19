@@ -11,6 +11,7 @@ import { loadOpenAccessArtworks } from "./services/museumCollections.js";
 import { artworkChoices, AXIS_CHAMPIONS, DIALOGUE_DISCLAIMER, voiceFor, formatLine } from "./config/companionDialogues.js";
 import { getWorld, PHILOSOPHY_QUERIES } from "./config/worlds.js";
 import { exhibitionScenes, finalScene } from "./config/exhibitionScenes.js";
+import { SCENE_QUERIES, MIN_LIVE_WORKS } from "./config/sceneCollections.js";
 
 const canvas = document.querySelector("#world");
 const ctx = canvas.getContext("2d", { alpha: false });
@@ -203,6 +204,7 @@ function setStage(stage) {
   if (stage === "world_exploration") activateWorld("monet");
   if (stage === "threshold") worldAdapter.setVisible(false);
   updateMeter();
+  if (stage === "world_exploration") syncSceneWall();
   render();
   if (stage === "world_exploration") queueMicrotask(initMuseumExperience);
   // The closing chapter reflects on a walk that has already happened — but "already happened" is
@@ -669,18 +671,32 @@ async function initMuseumExperience() {
   // veil. onWorldReady clears this timer on a normal (or fallback) reveal.
   worldVeilTimer = setTimeout(dismissWorldVeil, 60000);
 
-  // Every scene ships its own curated artworks, so the live open-access fetch is effectively
-  // disabled in scene mode — it only fills a scene that carries none, and none do.
-  if (Array.isArray(scene.artworks) && scene.artworks.length) return;
+  // Live open-access layer, on top of the static floor already hanging on the walls.
+  //
+  // Each scene is cast to its OWN artist (SCENE_QUERIES), so no two worlds show the same
+  // painting; the finale instead honours the visitor's philosophy, which is the entire payoff
+  // of the closing roundtable. Because sceneCollections.js already put real works on the walls,
+  // a failure here costs the visitor nothing — the fetch can only ever upgrade.
   const collectionStatus = document.querySelector("#collectionStatus");
+  const query = scene.isFinal
+    ? PHILOSOPHY_QUERIES[philosophyKey()] || SCENE_QUERIES[scene.id]
+    : SCENE_QUERIES[scene.id];
+  if (!query) return;
   try {
-    // Pre-choice this resolves to the default ending's artist; after the manifesto the
-    // visitor's own philosophy picks the collection that hangs in their world.
-    const liveArtworks = await loadOpenAccessArtworks(PHILOSOPHY_QUERIES[philosophyKey()] || "Claude Monet");
-    if (state.stage !== "world_exploration" || !liveArtworks.length) return;
-    state.galleryArtworks = liveArtworks;
-    museum3D?.buildGallery(liveArtworks);
-    if (collectionStatus) collectionStatus.textContent = `ART INSTITUTE OF CHICAGO · ${liveArtworks.length} OPEN ACCESS WORKS`;
+    const live = await loadOpenAccessArtworks(query);
+    if (state.stage !== "world_exploration" || live.length < MIN_LIVE_WORKS) return;
+    const study = (scene.artworks || []).find(item => item.source === "MUSE visual study");
+    const wall = study ? [...live.slice(0, 4), study] : live.slice(0, 4);
+    // Re-hang only when the live records actually differ from the floor: an identical rebuild
+    // would tear down and re-place every painting mid-walk for no visible gain.
+    const identical = wall.length === scene.artworks.length
+      && wall.every((item, index) => item.id === scene.artworks[index].id);
+    if (!identical) {
+      state.galleryArtworks = wall;
+      state.focusedArtwork = wall[0];
+      museum3D?.buildGallery(wall);
+    }
+    if (collectionStatus) collectionStatus.textContent = `ART INSTITUTE OF CHICAGO · ${query.toUpperCase()} · ${live.length} OPEN ACCESS WORKS`;
   } catch {
     if (collectionStatus) collectionStatus.textContent = `OPEN ACCESS COLLECTION · ${state.galleryArtworks.length} CACHED WORKS`;
   }
@@ -934,9 +950,25 @@ function goToExhibitionScene(index) {
   if (clamped === state.exhibitionSceneIndex && document.querySelector("#museum3d")) return;
   state.exhibitionSceneIndex = clamped;
   if (state.stage !== "world_exploration") return;
+  syncSceneWall();
   teardownMuseumExperience();
   render();
   queueMicrotask(initMuseumExperience);
+}
+
+/**
+ * Point the visitor's wall at the scene they are ABOUT to see, before it renders.
+ *
+ * The artwork inspector card renders from state.focusedArtwork, but that was only assigned
+ * inside initMuseumExperience — which runs a microtask after render(). While every scene hung
+ * the same three paintings this was invisible; now that each world has its own collection it
+ * showed the previous world's painting on arrival, one scene behind for the whole visit.
+ */
+function syncSceneWall() {
+  const scene = currentScene();
+  if (!scene?.artworks?.length) return;
+  state.galleryArtworks = [...scene.artworks];
+  state.focusedArtwork = scene.artworks[0];
 }
 
 /**

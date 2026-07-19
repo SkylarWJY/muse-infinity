@@ -9,8 +9,24 @@
 // every scene and worlds.js profiles own the camera.
 
 import { museumArtworks } from "./museumAssets.js";
+import { SCENE_COLLECTIONS } from "./sceneCollections.js";
 
-const [waterLilies, bedroom, grandeJatte] = museumArtworks;
+/**
+ * One scene's wall.
+ *
+ * Every scene hangs its OWN artist — four public-domain works from the Art Institute, cast to
+ * that world and globally deduplicated in sceneCollections.js, so no painting is ever seen
+ * twice in the museum. (Before this, nine scenes shared the same three paintings in different
+ * orders: three consecutive worlds showed literally identical walls.) The scene's interpretive
+ * study, where it has one, closes the walk as that chapter's signature — real masterpieces
+ * lead, the AI study answers them.
+ */
+const wallFor = (sceneId, study) => {
+  const collection = SCENE_COLLECTIONS[sceneId] || [];
+  // A missing collection must never leave a world with bare walls.
+  const base = collection.length ? collection : museumArtworks;
+  return study ? [...base, study] : [...base];
+};
 
 const interpretiveStudy = (id, title, artist, image, prompt) => ({
   id,
@@ -77,7 +93,7 @@ export const exhibitionScenes = [
     artist: "A cross-temporal salon",
     prompt: "What must become visible before an answer can begin?",
     thumbnail: "assets/scenes/01-entrance-conservatory.png",
-    artworks: [grandeJatte, waterLilies, bedroom]
+    artworks: wallFor("threshold-conservatory")
   },
   {
     worldKey: "elegant-floral-palace-interior",
@@ -87,7 +103,7 @@ export const exhibitionScenes = [
     artist: "Sigmund Freud",
     prompt: "Which part of your question belongs to you, and which part was inherited?",
     thumbnail: "assets/scenes/02-court-of-light.png",
-    artworks: [bedroom, grandeJatte, waterLilies]
+    artworks: wallFor("court-of-light")
   },
   {
     worldKey: "enchanted-water-garden-sanctuary",
@@ -97,7 +113,7 @@ export const exhibitionScenes = [
     artist: "Claude Monet",
     prompt: "Can a life change simply because attention becomes more precise?",
     thumbnail: "assets/scenes/03-monet-water-and-light.png",
-    artworks: [waterLilies, grandeJatte, bedroom]
+    artworks: wallFor("water-and-light")
   },
   {
     worldKey: "dreamlike-coastal-villa-gardens",
@@ -107,7 +123,7 @@ export const exhibitionScenes = [
     artist: "Pablo Picasso",
     prompt: "What changes when the same truth is seen from more than one angle?",
     thumbnail: "assets/scenes/04-sunset-frame-gallery.png",
-    artworks: [studies.picasso, grandeJatte, bedroom]
+    artworks: wallFor("sunset-frames", studies.picasso)
   },
   {
     worldKey: "van-gogh-inspired-gallery-interior",
@@ -117,7 +133,7 @@ export const exhibitionScenes = [
     artist: "Vincent van Gogh",
     prompt: "Can struggle deepen attention without becoming the source of meaning itself?",
     thumbnail: "assets/scenes/05-van-gogh-burning-sky.png",
-    artworks: [bedroom, studies.vanGogh, waterLilies]
+    artworks: wallFor("burning-sky", studies.vanGogh)
   },
   {
     worldKey: "sunlit-palace-gardens",
@@ -127,7 +143,7 @@ export const exhibitionScenes = [
     artist: "Qi Baishi",
     prompt: "How little can an image contain and still hold an entire world?",
     thumbnail: "assets/scenes/06-petal-transition-hall.png",
-    artworks: [studies.qiBaishi, waterLilies, grandeJatte]
+    artworks: wallFor("petal-transition", studies.qiBaishi)
   },
   {
     worldKey: "mexican-courtyard-bedroom-fantasy",
@@ -137,7 +153,7 @@ export const exhibitionScenes = [
     artist: "Frida Kahlo",
     prompt: "What can pain become after it is given color, symbol and form?",
     thumbnail: "assets/scenes/07-frida-living-memory.png",
-    artworks: [studies.frida, bedroom, waterLilies]
+    artworks: wallFor("living-memory", studies.frida)
   },
   {
     worldKey: "yellow-polka-dot-infinity-room",
@@ -147,7 +163,7 @@ export const exhibitionScenes = [
     artist: "Yayoi Kusama",
     prompt: "If the self repeats into infinity, what remains uniquely yours?",
     thumbnail: "assets/scenes/08-kusama-infinite-dots.png",
-    artworks: [studies.kusama, grandeJatte, waterLilies]
+    artworks: wallFor("infinite-repetition", studies.kusama)
   },
 ];
 
@@ -163,5 +179,5 @@ export const finalScene = {
   prompt: "What will you carry back into the life outside this world?",
   thumbnail: "assets/scenes/09-final-dream-world.png",
   isFinal: true,
-  artworks: [studies.future, waterLilies, bedroom]
+  artworks: wallFor("personal-dream-world", studies.future)
 };
