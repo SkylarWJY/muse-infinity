@@ -20,6 +20,14 @@ walk you *actually took* is synthesised into a world that exists only for you.
 
 </div>
 
+<div align="center">
+
+<img src="assets/generated/demo-walk.gif" alt="The full MUSE∞ walk — question, masters, nine worlds, finale — in 15 seconds" width="82%" />
+
+*The whole walk in 15 seconds — [watch the full demo with sound ▶](https://youtu.be/PlCZUTLrMvI)*
+
+</div>
+
 ---
 
 ## 🌌 Why this exists
