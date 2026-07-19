@@ -10,7 +10,7 @@ walk beside you and argue about every painting in their own voices, and at the e
 walk you *actually took* is synthesised into a world that exists only for you.
 
 [![Hackathon](https://img.shields.io/badge/Hackathon-SensAI%20·%20WORLDS%20IN%20ACTION%20%5B02%5D%20·%20SIGGRAPH%20LA-7c83ff?style=flat-square)](https://sensai.devpost.com)
-[![Worlds](https://img.shields.io/badge/Worlds-World%20Labs%20Marble%20·%2010%20generated%20spaces-1fd5b6?style=flat-square)](https://www.worldlabs.ai)
+[![Worlds](https://img.shields.io/badge/Worlds-World%20Labs%20Marble%20·%209%20generated%20spaces-1fd5b6?style=flat-square)](https://www.worldlabs.ai)
 [![Characters](https://img.shields.io/badge/Companions-Tripo%203D%20masters-f59e0b?style=flat-square)](https://www.tripo3d.ai)
 [![Voices](https://img.shields.io/badge/Narration-MiniMax%20speech--2.8%20·%207%20cast%20voices-b594ff?style=flat-square)](https://www.minimax.io)
 [![Dialogue](https://img.shields.io/badge/Dialogue-GPT--5.x%20·%203%20parallel%20perspectives-10a37f?style=flat-square)](#%EF%B8%8F-architecture)
@@ -30,40 +30,47 @@ walk you *actually took* is synthesised into a world that exists only for you.
 
 ---
 
+## ⏱️ For judges — everything in 60 seconds
+
+🎬 **Demo video:** [youtu.be/PlCZUTLrMvI](https://youtu.be/PlCZUTLrMvI)
+🏆 **Tracks:** Best Interactive Splat Experience (World Labs) · Best Storytelling & Entertainment · Best 3D GenAI Character (TRIPO)
+⚡ **Built July 18–19 2026 at Worlds in Action [02] LA** — full commit history in this repo, 15 acceptance-inspection reports in [`docs/acceptance/`](docs/acceptance/)
+
+**Run it** — zero API keys required, the full walk works offline. The worlds are a
+one-time ~790 MB download from the release, so give it a few minutes:
+
+```bash
+git clone https://github.com/SkylarWJY/muse-infinity && cd muse-infinity
+gh release download worlds-v1 && unzip -o worlds.zip -d assets/ && unzip -o characters.zip -d assets/
+npm start   # → http://localhost:4173
+```
+
+**The 3-minute path:** type a question → invite Monet, Van Gogh, Socrates → click any
+painting (three parallel live readings, the room re-lights) → click the tour HUD to
+auto-walk between stops → the closing roundtable reads *your* walk → step into the
+world it names.
+
+---
+
 ## 🌌 Why this exists
 
 **Humanity already built its answer machine. We just can't walk into it.**
+The paintings that answer our real questions exist — scattered across continents,
+sealed behind glass, separated by centuries, and silent. MUSE∞ is a museum with
+those constraints removed:
 
-For as long as people have faced the questions that don't fit in a search bar — *what
-makes a life meaningful, what is beauty for, why do we keep going* — they have answered
-in paint. Those answers exist. They hang in museums. But they are scattered across
-continents, sealed behind glass, separated by centuries, and silent: Van Gogh cannot
-tell you what the yellow meant, and Socrates never stood in the same room as Monet.
+- **It collapses space** — works that could never share a wall hang in one room,
+  because your *question*, not geography, decides what belongs together.
+- **It collapses time** — the minds behind the work stand beside you as a roundtable
+  across centuries, disagreeing in their own voices. Disagreement is where thinking
+  starts.
+- **It listens back** — every answer re-lights the room, bends the route, moves the
+  ending. No two people can walk the same MUSE∞.
+- **It ends with you** — your walk is synthesised into a final world that exists for
+  no one else. You leave standing *inside your own answer*.
 
-MUSE∞ is a museum with those constraints removed:
-
-- **It collapses space.** Works that could never share a wall — different wings,
-  different collections, different traditions — hang in one room, because your
-  *question*, not geography, decides what belongs together. The curator is the thing
-  you are trying to understand.
-- **It collapses time.** The minds behind the work stand beside you — not as wall
-  labels, not as a chat panel, but as a **roundtable across centuries**. They read the
-  same painting differently, answer *you* in their own voices, and disagree with each
-  other. Disagreement is the point: it is where thinking starts.
-- **It listens back.** Every answer you give changes the room — the light shifts, the
-  route bends, the ending moves. A museum stops being an archive you browse and
-  becomes a conversation that reshapes itself around what you say. No two people can
-  walk the same MUSE∞, because no two people carry the same question.
-- **It ends where no museum can: with you.** Your walk — the paintings you stopped
-  at, the answers you gave, the philosophy your choices revealed — is synthesised into
-  a final world that exists for no one else. You don't leave with a postcard. You
-  leave standing *inside your own answer*.
-
-The bet underneath all of this: generated worlds are not for escaping reality — they
-are for **entering ideas**. A question is an invisible thing; MUSE∞ makes it a place
-you can walk through. That is the shift this project argues for — from reading
-knowledge to inhabiting it, from museum-as-collection to museum-as-instrument-for-
-thinking, from visitor to curator, interlocutor, and finally the exhibit itself.
+Generated worlds are not for escaping reality — they are for **entering ideas**.
+A question is an invisible thing; MUSE∞ makes it a place you can walk through.
 
 **One question in. One world out. Everything in between is a conversation the real
 world could never host.**
@@ -91,7 +98,7 @@ step into it.
 <td><img src="assets/thumbs/yellow-polka-dot-infinity-room.jpg" width="220" alt="Infinity Dot Room"/></td>
 </tr></table>
 
-*Four of the ten World Labs Marble worlds generated for MUSE∞ — every one walkable,
+*Four of the nine World Labs Marble worlds generated for MUSE∞ — every one walkable,
 collider-grounded, and rendered at native metric scale.*
 </div>
 
@@ -151,8 +158,9 @@ world streams in behind a dark veil (no placeholder flash) and your feet snap to
 real collider ground.
 
 **Every world hangs its own artist.** The walls are not decoration reused from room to
-room: forty-two public-domain Art Institute works, globally deduplicated, so no
-painting is ever seen twice in the museum.
+room: thirty-six public-domain Art Institute works on the static floor, globally
+deduplicated, so no painting is ever seen twice — and a live open-access fetch
+upgrades each wall at runtime.
 
 | Chapter | World | The collection on its walls |
 |---|---|---|
@@ -218,8 +226,8 @@ hung with a collection matched to your philosophy.
 
 | | |
 |---|---|
-| 🖼️ **A collection, not wallpaper** | Forty-two public-domain Art Institute works, one artist cast per world, globally deduplicated — **no painting appears twice in the museum**. Every record keeps title, date, source URL and rights, and the live open-access fetch upgrades each wall at runtime without ever being required. |
-| 🌍 **Real generated worlds, walked natively** | Ten World Labs Marble worlds rendered at **native metric scale** (no bounding-box renormalisation): baked transforms, collider-driven ground snapping and walk bounds, per-world tuning. The official Marble viewer look — but playable. |
+| 🖼️ **A collection, not wallpaper** | Thirty-six public-domain Art Institute works, one artist cast per world, globally deduplicated — **no painting appears twice in the museum**. Every record keeps title, date, source URL and rights, and the live open-access fetch upgrades each wall at runtime without ever being required. |
+| 🌍 **Real generated worlds, walked natively** | Nine World Labs Marble worlds rendered at **native metric scale** (no bounding-box renormalisation): baked transforms, collider-driven ground snapping and walk bounds, per-world tuning. The official Marble viewer look — but playable. |
 | 🎭 **Three minds, not one chatbot** | One question returns **three parallel readings** in a single strict-JSON LLM call — per-master authored lenses, quarantined vocabularies (Monet may not borrow Van Gogh's words), positional speaker reconciliation. Divergence is engineered, not hoped for. |
 | 🗣️ **A cast, not a TTS** | Seven masters, seven MiniMax voices chosen from the live voice catalogue. Sentence-segmented narration advances only on the previous segment's `ended` event — no mid-line cut-offs — with one-segment prefetch (no dead air) and a watchdog (no stuck queue). |
 | 🎼 **A score that knows when to be quiet** | Per-act public-domain recordings — Mussorgsky's *Promenade* is literally music about walking an exhibition. Game-style ducking drops the score under any speaking master in ~0.6 s. |
@@ -255,16 +263,44 @@ flowchart LR
 
 | Tool | Role |
 |------|------|
-| [**World Labs Marble**](https://www.worldlabs.ai) | All ten walkable worlds — generated from authored prompts + reference images, rendered natively as splat + collider pairs. |
+| [**World Labs Marble**](https://www.worldlabs.ai) | All nine walkable worlds — generated from authored prompts + reference images, rendered natively as splat + collider pairs. |
 | [**Tripo**](https://www.tripo3d.ai) | The masters' 3D bodies — multiview turnaround sheets → reviewed GLB companions that walk with the visitor. |
 | [**MiniMax**](https://www.minimax.io) | `speech-2.8-turbo` per-master narration — seven voices cast from the live catalogue. |
 | **GPT-5.x** (OpenAI-compatible route) | Three-perspective artwork readings and the closing roundtable — strict `json_schema`, bounded retry, honest 502s. |
 | [**Art Institute of Chicago Open Access**](https://www.artic.edu/open-access) | Every painting on the walls, with title/date/source/rights intact. |
 | [**Three.js**](https://threejs.org) | Rendering, raycasting, collider walking. Everything else is **vanilla JS, zero build step**. |
 
+## 🧾 APIs & paid services (full disclosure)
+
+| Service | Used for | Tier |
+|---|---|---|
+| World Labs Marble | nine world generations — pre-generated during the event, shipped as local assets | paid API |
+| Tripo | master turnarounds → GLB bodies | paid API |
+| MiniMax speech-2.8-turbo | per-master narration cast | paid API |
+| GPT-5.x (OpenAI-compatible route) | three-perspective readings + roundtable | paid API |
+| Art Institute of Chicago Open Access | every painting on the walls | free |
+| Three.js · vanilla JS · Node.js | rendering, server, everything else | open source |
+
+## 📦 Get the worlds (one download)
+
+The nine Marble worlds (511 MB of `.spz` splats + `.glb` colliders) and five master
+GLB companions (278 MB) are distributed via a
+[GitHub Release](https://github.com/SkylarWJY/muse-infinity/releases/tag/worlds-v1) —
+too heavy for a git tree, too real to fake:
+
+```bash
+gh release download worlds-v1 --repo SkylarWJY/muse-infinity
+unzip -o worlds.zip -d assets/ && unzip -o characters.zip -d assets/
+```
+
+Everything else — dialogue, roundtable, artwork walls, audio, tests — runs from this
+repo alone.
+
 ## 🚀 Run it
 
-Requirements: Node.js 20+.
+**Zero API keys required** — the full walk, dialogue fallbacks and score all work
+offline once the worlds are downloaded. Keys only upgrade dialogue and narration to
+live. Requirements: Node.js 20+.
 
 ```bash
 npm start          # serves http://localhost:4173
@@ -293,14 +329,20 @@ through the ten acts · `R` reset · `P` performance tier.
   Everything bundled is itemised in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 - No accounts, no personal data, no tracking.
 
-## 🏁 SensAI · WORLDS IN ACTION [02] — SIGGRAPH LA
+## 🏁 Worlds in Action Hack [02] LA — track alignment
 
-Built during the 48-hour hack, targeting **T2 World Labs** (flagship — ten Marble
-worlds, walked natively), **T1 Storytelling** (the roundtable that reads your walk),
-and **T3 Tripo** (the masters' 3D bodies). The product was pair-built with AI coding
-agents (Codex + Claude) under human product direction; the engineer-facing spec lives
-in [`docs/LATEST_PRODUCT_SPEC.md`](docs/LATEST_PRODUCT_SPEC.md), and the full QA
-trail (15 acceptance-inspection reports) in [`docs/acceptance/`](docs/acceptance/).
+Built by **Team MUSE∞** during the 48-hour hack, July 18–19 2026, SIGGRAPH Week LA.
+
+| Track | What this project brings |
+|---|---|
+| **Best Interactive Splat Experience** *(World Labs)* | Nine Marble worlds walked natively at metric scale — baked transforms, collider ground-snapping, walk bounds, a guided-tour HUD with click-to-walk. The official viewer look, but playable. |
+| **Best Storytelling & Entertainment** | A five-act structure whose ending is computed, not scripted: the closing roundtable quotes the paintings you stopped at, refuses to invent stops you never made, and names a finale world only your choices unlock. |
+| **Best 3D GenAI Character** *(TRIPO)* | Masters built from documented public-domain portraits → multiview turnarounds → reviewed GLB companions that stand in the world, walk beside you, and are clickable — not a chat panel. |
+
+The product was pair-built with AI coding agents (Codex + Claude) under human product
+direction — the full commit history is in this repo, the engineer-facing spec in
+[`docs/LATEST_PRODUCT_SPEC.md`](docs/LATEST_PRODUCT_SPEC.md), and the QA trail
+(15 acceptance-inspection reports) in [`docs/acceptance/`](docs/acceptance/).
 
 Released under the [MIT License](LICENSE).
 
