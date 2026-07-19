@@ -22,6 +22,46 @@ walk you *actually took* is synthesised into a world that exists only for you.
 
 ---
 
+## 🌌 Why this exists
+
+**Humanity already built its answer machine. We just can't walk into it.**
+
+For as long as people have faced the questions that don't fit in a search bar — *what
+makes a life meaningful, what is beauty for, why do we keep going* — they have answered
+in paint. Those answers exist. They hang in museums. But they are scattered across
+continents, sealed behind glass, separated by centuries, and silent: Van Gogh cannot
+tell you what the yellow meant, and Socrates never stood in the same room as Monet.
+
+MUSE∞ is a museum with those constraints removed:
+
+- **It collapses space.** Works that could never share a wall — different wings,
+  different collections, different traditions — hang in one room, because your
+  *question*, not geography, decides what belongs together. The curator is the thing
+  you are trying to understand.
+- **It collapses time.** The minds behind the work stand beside you — not as wall
+  labels, not as a chat panel, but as a **roundtable across centuries**. They read the
+  same painting differently, answer *you* in their own voices, and disagree with each
+  other. Disagreement is the point: it is where thinking starts.
+- **It listens back.** Every answer you give changes the room — the light shifts, the
+  route bends, the ending moves. A museum stops being an archive you browse and
+  becomes a conversation that reshapes itself around what you say. No two people can
+  walk the same MUSE∞, because no two people carry the same question.
+- **It ends where no museum can: with you.** Your walk — the paintings you stopped
+  at, the answers you gave, the philosophy your choices revealed — is synthesised into
+  a final world that exists for no one else. You don't leave with a postcard. You
+  leave standing *inside your own answer*.
+
+The bet underneath all of this: generated worlds are not for escaping reality — they
+are for **entering ideas**. A question is an invisible thing; MUSE∞ makes it a place
+you can walk through. That is the shift this project argues for — from reading
+knowledge to inhabiting it, from museum-as-collection to museum-as-instrument-for-
+thinking, from visitor to curator, interlocutor, and finally the exhibit itself.
+
+**One question in. One world out. Everything in between is a conversation the real
+world could never host.**
+
+---
+
 ## 🎬 The 60-second story
 
 You arrive with one existential question — *"What makes a life meaningful?"* — and the
