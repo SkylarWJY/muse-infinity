@@ -1,16 +1,57 @@
 # MUSE∞ — The Impossible Museum
 
-> Ask one question. Walk through the dream gallery it becomes.
+> **Ask a question. Walk through humanity's cultural memory. Enter the world your answer becomes.**
 
-MUSE∞ is an AI-native dream museum where one personal question becomes a walkable 3D gallery. A visitor asks an existential theme, chooses artist and thinker companions, explores open-access artworks across connected world-regions, and watches each grounded conversation reshape the surrounding environment.
+![MUSE∞ glass conservatory exhibition](assets/scenes/01-entrance-conservatory.png)
 
-This repository contains the Build Week engineering baseline for that product: a local Three.js walkable gallery, open-access artwork loading, GPT-5.6 dialogue with honest fallback, deterministic world transformations, and server-only World Labs Marble and Tripo integration points.
+MUSE∞ is a **spatial operating system for thinking with human culture**. A personal question becomes an AI-curated exhibition across time, geography, and institutional collections. The visitor walks through artworks that could never share one physical museum, accompanied by artist and thinker perspectives that discuss the work beside them. Each act of attention, each question, and each answer changes the curatorial relationship among the works and the atmosphere of the world. The final answer is not delivered as text. It becomes a personal Dream World the visitor can enter.
+
+## Why this should exist
+
+When people ask *What makes a life meaningful?*, *How do I live with uncertainty?*, or *What is art supposed to do to a human being?*, they rarely need one more instant answer. They need time, contradiction, emotion, historical perspective, and a way to see their own thinking change.
+
+Search engines retrieve information. Chatbots produce language. Museums preserve objects. MUSE∞ combines them into a new medium for reflection:
+
+- **The visitor becomes a co-curator.** The exhibition begins with a personal question, not a fixed institutional theme.
+- **AI becomes a cultural orchestrator, not an answer machine.** It builds meaningful relationships among artworks, artists, thinkers, and the visitor's evolving point of view.
+- **The collection becomes a living argument.** Chinese and Western works, ancient and contemporary ideas, and objects held by different museums can meet in one coherent spatial narrative.
+- **The companions become perspectives in the room.** Transparent AI interpretations of artists and thinkers walk with the visitor and discuss the specific work currently in view.
+- **The gallery becomes responsive.** Dialogue changes light, emphasis, spatial relationships, the next encounter, and eventually the architecture of the answer itself.
+- **The answer becomes inhabitable.** The visitor's language, choices, and attention are synthesized into an explorable Dream World.
+
+MUSE∞ is therefore not a virtual museum and not an AI tour guide. It proposes a new category: **an experiential interface for human meaning-making**, where cultural memory becomes an active thinking partner.
+
+## The experience
+
+```text
+Ask a life question
+        ↓
+Choose artists and thinkers to walk with you
+        ↓
+AI curates a cross-temporal, cross-cultural exhibition
+        ↓
+Walk continuously through responsive 3D worlds
+        ↓
+Approach a work and discuss it together in context
+        ↓
+Each response changes the exhibition and the next encounter
+        ↓
+Form an answer through attention, dialogue, and choice
+        ↓
+Enter a personal Dream World generated from that answer
+```
+
+> **Judge-facing thesis:** MUSE∞ turns the museum from an archive of finished meaning into a living instrument for forming meaning. The visitor does not consume an AI answer; they build one with humanity's cultural memory, then step inside it.
+
+This repository contains the working prototype for that thesis: nine local World Labs SPZ environments with collider-based movement, eight Tripo 3D historical companions, in-world framed exhibits, forward portals between exhibition chapters, artwork-grounded GPT dialogue with an honest local fallback, and the cinematic question-to-Dream-World narrative.
+
+Read the full [product vision](PRODUCT_VISION.md).
 
 For the latest product direction and engineer-facing build spec, read [LATEST_PRODUCT_SPEC.md](LATEST_PRODUCT_SPEC.md).
 
-## Current build result
+## Current build
 
-The current build proves one production-shaped path through the concept without making the judging journey depend on paid services: the browser enters a real Three.js gallery, loads open-access museum records through a server proxy, asks an artwork-aware GPT-5.6 dialogue route when configured, and falls back honestly when it is not. Separate server-only adapters cover OpenAI Realtime, World Labs Marble generation, and Tripo multiview/rigging tasks. Paid generation routes require `INTEGRATION_ADMIN_TOKEN`; the static server exposes only the runtime files needed by the browser and blocks `.env`, repository metadata, server code, tests, and project documents.
+The prototype keeps the judging path independent from paid services. The browser can enter a live World Labs splat, walk with real Tripo GLB characters, approach framed works inside the scene, and discuss the selected work through the server-side dialogue route. When no OpenAI key is configured, the UI labels and uses a deterministic local response. Separate protected routes cover future World Labs and Tripo generation tasks; the public server blocks secrets, repository metadata, tests, and project documents.
 
 ## Run
 
@@ -21,6 +62,12 @@ npm start
 ```
 
 Open `http://localhost:4173`.
+
+Open the live World Labs + Tripo prototype at:
+
+```text
+http://localhost:4173/3d.html
+```
 
 For the 75–100 second judging path, open:
 
@@ -93,10 +140,12 @@ The dialogue layer never manipulates individual scene objects. It returns a cons
 The implementation separates responsibilities into:
 
 - `config/assets.js` — centralized world and character placeholders.
+- `config/immersiveAssets.js` — nine SPZ/collider chapters, Tripo character catalog, and scene-specific exhibits.
 - `services/worldLabs.js` — supported hosted/embed loading, lifecycle, timeout and local fallback.
 - `lib/audioAnalysis.js` — smoothed low/mid/high/amplitude signal with deterministic simulation.
 - `lib/performance.js` — Auto/High/Low quality selection, DPR and particle budgets.
 - `lib/museum3d.js` — local WebGL architecture, camera movement, artwork frames, raycasting and companion markers.
+- `lib/immersiveWorld.js` — Spark SPZ rendering, Rapier collision, in-world exhibits, following companions, and forward portals.
 - `services/museumCollections.js` — open-access collection loading.
 - `services/voiceConversation.js` — speech recognition, GPT-5.6 dialogue request and spoken reply.
 - `app.js` — preserved narrative state machine plus the constrained world-effect controller.
@@ -105,7 +154,9 @@ The implementation separates responsibilities into:
 
 ## World Labs integration
 
-The project does not invent or depend on an undocumented World Labs SDK. It supports the safest integration currently possible without credentials: an official/public hosted interactive world embedded behind the authored particle and interface layers.
+The repository includes nine exported World Labs worlds under `assets/worlds/3d/`, each paired with an SPZ render asset and a GLB collider. The independent `/3d.html` experience renders them with Spark, uses Rapier for walkable collision, and adds the interactive exhibition layer in Three.js. Generation remains a protected server-side operation; the judging path only loads reviewed local exports and never exposes a World Labs key.
+
+The original cinematic journey also retains the hosted-world adapter in `worlds.json` as a lighter fallback/deployment option:
 
 Edit [`worlds.json`](worlds.json):
 
@@ -123,7 +174,7 @@ Edit [`worlds.json`](worlds.json):
 }
 ```
 
-Only put a public hosted-world URL in this file. Never put an API key in browser-readable configuration. If the world is missing, unsupported, blocked, or not loaded within eight seconds, the full journey continues with the local authored particle world. The footer truthfully displays `WORLD LABS READY` or `LOCAL FALLBACK`.
+Only put a public hosted-world URL in this file. Never put an API key in browser-readable configuration. If the hosted world is missing or blocked, the cinematic journey continues with its authored local particle world; the separate 3D route uses the reviewed local SPZ exports.
 
 World Labs and Tripo generation/task endpoints are intentionally separate from the public judging path. Configure a long random `INTEGRATION_ADMIN_TOKEN` and send it as `Authorization: Bearer <token>` when invoking those routes; without it, the server returns `503` before any paid provider request is attempted.
 
@@ -135,18 +186,29 @@ Labeled multi-view inputs are stored under:
 /assets/generated/turnarounds/
 ```
 
-Each sheet is also split into the exact Tripo order `[front, left, back, right]` under `assets/generated/turnarounds/views/<character>/`. The server exposes explicit Tripo OpenAPI v2 single-view, multiview, polling, rigging and animation routes. Set `PUBLIC_APP_URL` only after these files are available on the deployed public HTTPS site, then submit one reviewed character at a time through `POST /api/tripo/characters/:id`. Submission is never automatic because it consumes credits.
+Each sheet is also split into the exact Tripo order `[front, left, back, right]` under `assets/generated/turnarounds/views/<character>/`. The server exposes explicit Tripo OpenAPI v3 single-view, multiview, polling, rigging and animation routes. Set `PUBLIC_APP_URL` only after these files are available on the deployed public HTTPS site, then submit one reviewed character at a time through `POST /api/tripo/characters/:id`. Submission is never automatic because it consumes credits.
 
-After a model succeeds, download the temporary output immediately, optimize it for the web, preserve its generation/source record, and set the reviewed path on that participant in `config/museumAssets.js`. The Three.js gallery loads non-null GLB paths with `GLTFLoader`; it never invents a placeholder person when a file is absent.
+The local batch pipeline accepts the eight approved four-view sheets, finds whitespace separators without cutting the subject, and writes normalized `768x1024` PNG views plus a resumable manifest under `outputs/tripo-characters/<slug>/`:
+
+```bash
+npm run tripo:characters -- --dry-run --all
+npm run tripo:characters -- --dry-run --character "Claude Monet"
+npm run tripo:characters -- --submit --confirm-upload --character "Claude Monet"
+npm run tripo:characters -- --submit --confirm-upload --all
+```
+
+`--all` always runs Claude Monet first and stops unless that canary downloads as a valid GLB with at least one mesh. Real uploads require both `--submit` and `--confirm-upload`; failed paid tasks are not recreated unless `--retry-failed` is also supplied. The default request uses ordered PNG upload tokens, approximately 12k faces, PBR textures, original-image texture alignment, and image-aligned orientation.
+
+Eight reviewed Tripo outputs are bundled under `assets/characters/3d/` and mapped in `config/immersiveAssets.js`. Each 3D chapter loads one chosen companion plus the relevant artist or thinker, then updates their position and orientation as they walk with the visitor. The generation pipeline remains available for rebuilding those assets from the approved multiview sheets.
 
 ## Fallback levels
 
-1. Public World Labs hosted world behind the full authored particle layer.
-2. Reserved local splat/asset path when a supported WebGL renderer is introduced.
-3. Reserved local GLB environment.
-4. Current local point-cloud architecture, lighting, character memories and cached dialogue.
+1. Local reviewed World Labs SPZ + collider with Tripo GLB companions at `/3d.html`.
+2. Public World Labs hosted embed behind the cinematic interface when configured.
+3. Authored Three.js conservatory and open-access artworks.
+4. Deterministic particle world, image journey, and cached dialogue.
 
-The fourth level is complete and always available. World or network failure never blocks questions, choices, scoring, transformation, or the manifesto.
+The lower levels remain available so a provider or network failure never blocks questions, choices, scoring, transformation, or the final manifesto.
 
 ## Performance
 
@@ -161,8 +223,8 @@ The fourth level is complete and always available. World or network failure neve
 
 - Dialogue is labeled as AI interpretation, not authentic quotation.
 - The prototype does not clone voices or imply endorsement.
-- Bundled collection images and historical portraits are limited to documented public-domain/open-access sources; no third-party character model is included.
-- Historical and living creators are represented through abstract particles and documented thematic perspectives.
+- Bundled museum works are documented public-domain/open-access images; generated visual studies are explicitly labeled as interpretive rather than authentic works.
+- Historical and living creators are represented by AI-generated Tripo models and transparent interpretive dialogue, never as authentic resurrection or quotation.
 - The current build uses no personal data.
 
 ## Codex collaboration
@@ -194,21 +256,18 @@ This repository is being published during the submission period as a work in pro
 
 ## Next phase
 
-1. Connect the implemented WebRTC session bridge to the gallery microphone for interruptible speech-to-speech.
-2. Route the returned dialogue effect into the Three.js lights, materials and architecture.
-3. Add one licensed/generated historical bust GLB at the documented path.
-4. Optionally replace the authored conservatory with one public World Labs Marble world while preserving the local fallback.
-
-Do not add five complete worlds, seven autonomous agents, accounts, multiplayer, unrestricted WASD movement, or live APIs on the critical judging path.
+1. Connect the implemented WebRTC session bridge to the 3D gallery microphone for interruptible speech-to-speech.
+2. Ground companion responses in a reviewed retrieval corpus of writings, letters, biographies, and collection scholarship.
+3. Optimize and stream the large SPZ/GLB assets for faster first entry on deployed hardware.
+4. Generate the final Dream World from the complete visitor interaction trace rather than a deterministic local resolver.
 
 ## Current limitations
 
-- The gallery is real WebGL geometry, but it is an authored local conservatory rather than a Gaussian-splat or generated World Labs environment.
+- The nine World Labs scenes are separate reviewed chapters connected by forward portals, not one monolithic spatial reconstruction.
 - GPT-5.6 dialogue only becomes live when `OPENAI_API_KEY` is configured; otherwise the interface clearly reports its local fallback.
-- Audio-reactive values use a deterministic simulated signal until TTS audio is attached.
-- Four artistic worlds are visible previews only.
+- The current Tripo companions follow and turn toward the visitor but are not yet rigged with walking or facial animation.
+- Several scene-specific images are clearly labeled AI interpretive studies because open-access reproductions for every represented artist are not bundled.
 - The final share card is rendered in-app but not yet exported as an image.
-- No actual World Labs hosted URL or Tripo GLB is present; both integrations therefore truthfully remain documented Phase 3 asset paths.
 
 ## License and attribution
 

@@ -6,12 +6,17 @@
   "type": "module",
   "scripts": {
     "start": "node --env-file-if-exists=.env server.mjs",
-    "check": "node --check app.js && node --check server.mjs && node --check config/assets.js && node --check config/museumAssets.js && node --check services/worldLabs.js && node --check services/worldLabsApi.js && node --check services/tripoApi.js && node --check services/museumCollections.js && node --check services/voiceConversation.js && node --check lib/audioAnalysis.js && node --check lib/performance.js && node --check lib/memoryWorld.js && node --check lib/museum3d.js",
-    "test": "npm run test:contracts && npm run test:server",
+    "check": "node --check app.js && node --check 3d.js && node --check server.mjs && node --check config/assets.js && node --check config/museumAssets.js && node --check config/immersiveAssets.js && node --check services/worldLabs.js && node --check services/worldLabsApi.js && node --check services/tripoApi.js && node --check services/museumCollections.js && node --check services/voiceConversation.js && node --check lib/audioAnalysis.js && node --check lib/performance.js && node --check lib/memoryWorld.js && node --check lib/museum3d.js && node --check lib/immersiveWorld.js && node --check lib/tripoCharacters.js && node --check scripts/tripo-characters.mjs",
+    "test": "npm run test:contracts && npm run test:tripo-batch && npm run test:server",
     "test:contracts": "node tests/integration-contracts.mjs",
-    "test:server": "node tests/server-contracts.mjs"
+    "test:tripo-batch": "node tests/tripo-character-batch.mjs",
+    "test:server": "node tests/server-contracts.mjs",
+    "tripo:characters": "node scripts/tripo-characters.mjs"
   },
   "dependencies": {
+    "@dimforge/rapier3d-compat": "^0.12.0",
+    "@sparkjsdev/spark": "^2.1.0",
+    "sharp": "^0.34.5",
     "three": "^0.180.0"
   }
 }

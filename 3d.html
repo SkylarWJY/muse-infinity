@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08070a" />
+    <title>MUSE∞ 3D Lab</title>
+    <meta name="description" content="A walkable World Labs exhibition with interactive Tripo 3D companions." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Gilda+Display&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="3d.css" />
+  </head>
+  <body>
+    <main class="immersive-shell">
+      <div id="stagePoster" class="stage-poster" aria-hidden="true"></div>
+      <div id="immersiveStage" class="immersive-stage"></div>
+      <div class="world-shade" aria-hidden="true"></div>
+
+      <header class="immersive-header">
+        <a class="wordmark" href="/" aria-label="Return to the MUSE experience">MUSE<span>∞</span></a>
+        <div class="live-status"><i></i><span>3D LAB</span></div>
+        <div class="scene-count"><span id="sceneNumber">01</span> / 09</div>
+      </header>
+
+      <section class="scene-copy" aria-live="polite">
+        <p id="sceneChapter">01 / ARRIVAL</p>
+        <h1 id="sceneTitle">The Threshold Conservatory</h1>
+        <span id="sceneArtist">Socrates</span>
+      </section>
+
+      <section id="companionPresence" class="companion-presence" aria-live="polite">
+        <small>WALKING WITH</small>
+        <div id="companionList"></div>
+      </section>
+
+      <div class="world-reticle" aria-hidden="true"><i></i></div>
+
+      <section id="loadingPanel" class="loading-panel" aria-live="polite">
+        <span id="loadingStage">ENTERING WORLD</span>
+        <div><i id="loadingBar"></i></div>
+        <b id="loadingPercent">0%</b>
+      </section>
+
+      <section id="artworkFocus" class="artwork-focus" hidden aria-live="polite">
+        <small>WORK IN VIEW</small>
+        <h2 id="artworkTitle">Water Lilies</h2>
+        <p><span id="artworkArtist">Claude Monet</span> · <span id="artworkDate">1906</span></p>
+        <button id="artworkAction" type="button"><span>DISCUSS WITH YOUR COMPANIONS</span><b>↗</b></button>
+      </section>
+
+      <section id="conversationPanel" class="conversation-panel" hidden aria-label="Conversation with an interpretive AI companion">
+        <header>
+          <div><small id="conversationArtwork">DISCUSSING THE WORK</small><b id="conversationName">Socrates</b></div>
+          <button id="closeConversation" type="button" aria-label="Close conversation" title="Close">×</button>
+        </header>
+        <div id="conversationLog" class="conversation-log"></div>
+        <form id="conversationForm">
+          <input id="conversationInput" name="question" maxlength="500" autocomplete="off" placeholder="What do you notice in this work?" aria-label="Question for your companions" />
+          <button type="submit" aria-label="Send question" title="Send">↗</button>
+        </form>
+      </section>
+
+      <nav class="scene-switcher" aria-label="Exhibition scenes">
+        <button id="previousScene" class="scene-arrow" type="button" aria-label="Previous scene" title="Previous scene">←</button>
+        <div id="sceneRail" class="scene-rail"></div>
+        <button id="nextScene" class="scene-arrow" type="button" aria-label="Next scene" title="Next scene">→</button>
+      </nav>
+
+      <div class="mobile-controls" aria-label="Movement controls">
+        <button type="button" data-control="forward" aria-label="Move forward">↑</button>
+        <button type="button" data-control="left" aria-label="Move left">←</button>
+        <button type="button" data-control="back" aria-label="Move backward">↓</button>
+        <button type="button" data-control="right" aria-label="Move right">→</button>
+      </div>
+
+      <footer class="immersive-footer">
+        <span>WASD / ARROWS TO WALK · DRAG TO LOOK · MOVE THROUGH THE LIGHT GATE</span>
+        <span>WORLD LABS + TRIPO · AI INTERPRETATION</span>
+      </footer>
+    </main>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./node_modules/three/build/three.module.js",
+          "three/addons/": "./node_modules/three/examples/jsm/",
+          "@sparkjsdev/spark": "./node_modules/@sparkjsdev/spark/dist/spark.module.js",
+          "@dimforge/rapier3d-compat": "./node_modules/@dimforge/rapier3d-compat/rapier.es.js"
+        }
+      }
+    </script>
+    <script type="module" src="3d.js"></script>
+  </body>
+</html>

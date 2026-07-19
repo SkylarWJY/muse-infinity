@@ -50,6 +50,13 @@ try {
   const indexResponse = await expectStatus("/", 200);
   assert.match(await indexResponse.text(), /"three": "\.\/node_modules\/three\/build\/three\.module\.js"/);
   await expectStatus("/app.js", 200);
+  const immersiveResponse = await expectStatus("/3d.html", 200);
+  assert.match(await immersiveResponse.text(), /@sparkjsdev\/spark/);
+  await expectStatus("/3d.js", 200);
+  await expectStatus("/config/immersiveAssets.js", 200);
+  await expectStatus("/lib/immersiveWorld.js", 200);
+  await expectStatus("/node_modules/@sparkjsdev/spark/dist/spark.module.js", 200);
+  await expectStatus("/node_modules/@dimforge/rapier3d-compat/rapier.es.js", 200);
   await expectStatus("/assets/generated/muse-hero-conservatory-v3.png", 200);
   await expectStatus("/node_modules/three/build/three.module.js", 200);
   await expectStatus("/worlds.json", 200);

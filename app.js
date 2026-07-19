@@ -384,6 +384,7 @@ function bindActions() {
     if (count) count.textContent = `${state.selectedCompanions.size} / 3 SELECTED`;
     const enter = experience.querySelector("[data-action='curate-exhibition']");
     if (enter) enter.disabled = state.selectedCompanions.size === 0;
+    sessionStorage.setItem("muse.companions", JSON.stringify([...state.selectedCompanions]));
   }));
   experience.querySelectorAll("[data-life-question]").forEach(button => button.addEventListener("click", () => {
     const input = experience.querySelector("#lifeQuestion");
@@ -648,6 +649,7 @@ function reset() {
   transformationTimers.forEach(clearTimeout);
   teardownMuseumExperience();
   Object.assign(state, { stage:"threshold", selectedPortal:null, activeSpeaker:null, currentQuestion:null, dialogueIndex:0, philosophy:{perception:0,emotion:0,invention:0}, finalWorld:null, userAnswer:"", answerLens:null, discussionCount:0, exhibitionSceneIndex:0, transformationStart:0, transformationChoice:null, selectedCompanions:new Set(), galleryArtworks:[...museumArtworks], focusedArtwork:museumArtworks[0] });
+  sessionStorage.removeItem("muse.companions");
   particleMode = "threshold";
   setStage("threshold");
 }

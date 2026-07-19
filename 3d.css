@@ -1,0 +1,136 @@
+:root {
+  --ink: #08070a;
+  --ivory: #fffaf1;
+  --muted: rgba(255, 250, 241, 0.58);
+  --line: rgba(255, 250, 241, 0.22);
+  --accent: #d8c9aa;
+}
+
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--ink); color: var(--ivory); }
+body, button, input { font-family: "DM Sans", sans-serif; font-weight: 300; }
+button, a { color: inherit; }
+button { cursor: pointer; }
+
+.immersive-shell, .immersive-stage, .stage-poster, .world-shade { position: fixed; inset: 0; }
+.immersive-shell { overflow: hidden; background: var(--ink); }
+.stage-poster { z-index: 0; background: center / cover no-repeat; filter: brightness(.64) saturate(.82); transform: scale(1.02); transition: opacity .7s ease; }
+.immersive-stage.has-live-world + .world-shade { background: rgba(8, 7, 10, .08); }
+.immersive-shell:has(.immersive-stage.has-live-world) .stage-poster { opacity: 0; }
+.immersive-stage { z-index: 1; }
+.immersive-canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+.immersive-canvas:active { cursor: grabbing; }
+.world-shade { z-index: 2; pointer-events: none; background: rgba(8, 7, 10, .12); border: 18px solid rgba(8, 7, 10, .1); }
+
+.immersive-header, .immersive-footer, .scene-copy, .scene-switcher, .loading-panel, .artwork-focus, .conversation-panel, .mobile-controls, .companion-presence, .world-reticle { position: fixed; z-index: 5; }
+.immersive-header { top: 24px; left: 30px; right: 30px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+.wordmark { width: max-content; color: var(--ivory); font: 21px/1 "Gilda Display", serif; letter-spacing: 0; text-decoration: none; }
+.wordmark span { color: var(--accent); }
+.live-status { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 8px; letter-spacing: .2em; }
+.live-status i { width: 6px; height: 6px; border-radius: 50%; background: #83d6a6; box-shadow: 0 0 12px rgba(131, 214, 166, .8); }
+.scene-count { justify-self: end; color: var(--muted); font-size: 9px; letter-spacing: .18em; }
+.scene-count span { color: var(--ivory); }
+
+.scene-copy { top: 92px; left: 30px; max-width: min(460px, 52vw); text-shadow: 0 3px 28px rgba(0, 0, 0, .8); pointer-events: none; }
+.scene-copy p { margin: 0 0 9px; color: var(--accent); font-size: 8px; letter-spacing: .24em; }
+.scene-copy h1 { margin: 0; font: 38px/1.04 "Gilda Display", serif; letter-spacing: 0; }
+.scene-copy span { display: block; margin-top: 12px; color: var(--muted); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }
+
+.companion-presence { top: 88px; right: 30px; width: min(300px, 42vw); text-align: right; pointer-events: none; text-shadow: 0 3px 28px rgba(0, 0, 0, .9); }
+.companion-presence small { display: block; color: var(--muted); font-size: 7px; letter-spacing: .2em; }
+.companion-presence div { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.companion-presence span { padding: 5px 8px; border: 1px solid rgba(255, 250, 241, .3); background: rgba(8, 7, 10, .34); color: var(--ivory); font-size: 8px; letter-spacing: .08em; backdrop-filter: blur(10px); }
+
+.world-reticle { left: 50%; top: 50%; width: 22px; height: 22px; transform: translate(-50%, -50%); pointer-events: none; }
+.world-reticle::before, .world-reticle::after { content: ""; position: absolute; background: rgba(255, 250, 241, .5); }
+.world-reticle::before { left: 10px; top: 2px; width: 1px; height: 18px; }
+.world-reticle::after { left: 2px; top: 10px; width: 18px; height: 1px; }
+.world-reticle i { position: absolute; inset: 8px; border: 1px solid var(--accent); border-radius: 50%; }
+
+.loading-panel { left: 50%; top: 50%; width: min(310px, 70vw); transform: translate(-50%, -50%); padding: 18px; border: 1px solid var(--line); background: rgba(8, 7, 10, .74); backdrop-filter: blur(16px); transition: opacity .45s ease, visibility .45s ease; }
+.loading-panel.ready { opacity: 0; visibility: hidden; }
+.loading-panel span, .loading-panel b { display: block; font-size: 8px; font-weight: 400; letter-spacing: .19em; }
+.loading-panel b { margin-top: 10px; text-align: right; color: var(--accent); }
+.loading-panel > div { height: 2px; margin-top: 13px; background: rgba(255, 255, 255, .14); }
+.loading-panel i { display: block; width: 0; height: 100%; background: var(--accent); transition: width .25s ease; }
+
+.artwork-focus { right: 30px; top: 138px; width: 260px; padding: 15px; border-left: 2px solid var(--accent); background: rgba(8, 7, 10, .72); text-align: left; backdrop-filter: blur(18px); box-shadow: 0 18px 52px rgba(0, 0, 0, .28); }
+.artwork-focus[hidden] { display: none; }
+.artwork-focus small { color: var(--accent); font-size: 7px; letter-spacing: .2em; }
+.artwork-focus h2 { margin: 7px 0 5px; font: 21px/1.08 "Gilda Display", serif; letter-spacing: 0; }
+.artwork-focus p { margin: 0; color: var(--muted); font-size: 9px; letter-spacing: .08em; }
+.artwork-focus button { display: flex; width: 100%; align-items: center; justify-content: space-between; margin-top: 12px; padding: 10px 0 0; border: 0; border-top: 1px solid var(--line); background: transparent; color: var(--ivory); }
+.artwork-focus button span { font-size: 7px; letter-spacing: .16em; }
+.artwork-focus button b { color: var(--accent); font-size: 18px; font-weight: 300; }
+.artwork-focus button:hover span, .artwork-focus button:focus-visible span { color: var(--accent); }
+
+.conversation-panel { right: 30px; bottom: 138px; width: min(390px, calc(100vw - 60px)); border: 1px solid var(--line); border-radius: 6px; background: rgba(8, 7, 10, .88); backdrop-filter: blur(22px); box-shadow: 0 24px 80px rgba(0, 0, 0, .36); }
+.conversation-panel[hidden] { display: none; }
+.conversation-panel header { display: flex; align-items: center; justify-content: space-between; padding: 15px 16px; border-bottom: 1px solid var(--line); }
+.conversation-panel small, .conversation-panel b { display: block; }
+.conversation-panel small { color: var(--muted); font-size: 7px; letter-spacing: .16em; }
+.conversation-panel b { margin-top: 4px; color: var(--accent); font: 18px/1.1 "Gilda Display", serif; }
+.conversation-panel header button, .conversation-panel form button { width: 34px; height: 34px; border: 0; background: transparent; font-size: 22px; }
+.conversation-log { max-height: 190px; overflow: auto; padding: 15px 16px; font-size: 12px; line-height: 1.55; }
+.conversation-log p { margin: 0 0 12px; }
+.conversation-log p:last-child { margin-bottom: 0; }
+.conversation-log strong { color: var(--accent); font-weight: 400; }
+.conversation-panel form { display: grid; grid-template-columns: 1fr 42px; border-top: 1px solid var(--line); }
+.conversation-panel input { min-width: 0; padding: 14px 16px; border: 0; outline: 0; background: transparent; color: var(--ivory); font-size: 12px; }
+.conversation-panel input::placeholder { color: rgba(255, 250, 241, .42); }
+.conversation-panel form button { align-self: center; color: var(--accent); }
+
+.scene-switcher { left: 30px; right: 30px; bottom: 50px; display: grid; grid-template-columns: 42px minmax(0, 1fr) 42px; gap: 10px; align-items: center; }
+.scene-arrow { width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 50%; background: rgba(8, 7, 10, .54); backdrop-filter: blur(12px); font-size: 18px; }
+.scene-arrow:hover, .scene-arrow:focus-visible { color: var(--ink); background: var(--ivory); }
+.scene-arrow:disabled { opacity: .28; cursor: default; }
+.scene-rail { display: grid; grid-template-columns: repeat(9, minmax(62px, 1fr)); gap: 6px; min-width: 0; }
+.scene-tab { position: relative; height: 62px; padding: 0; overflow: hidden; border: 1px solid rgba(255, 255, 255, .18); border-radius: 4px; background: var(--thumb) center / cover; opacity: .58; }
+.scene-tab::after { content: attr(data-index); position: absolute; right: 6px; bottom: 5px; padding: 2px 4px; background: rgba(8, 7, 10, .65); color: var(--ivory); font-size: 7px; letter-spacing: .08em; }
+.scene-tab:hover { opacity: .88; }
+.scene-tab.active { border-color: var(--accent); opacity: 1; box-shadow: inset 0 -3px 0 var(--accent); }
+
+.mobile-controls { display: none; }
+.immersive-footer { left: 30px; right: 30px; bottom: 20px; display: flex; justify-content: space-between; color: rgba(255, 250, 241, .38); font-size: 7px; letter-spacing: .14em; pointer-events: none; }
+
+@media (max-width: 680px) {
+  .world-shade { border-width: 8px; }
+  .immersive-header { top: 17px; left: 17px; right: 17px; grid-template-columns: 1fr 1fr; }
+  .live-status { display: none; }
+  .scene-copy { top: 68px; left: 17px; max-width: calc(100vw - 34px); }
+  .scene-copy h1 { max-width: 76vw; font-size: 28px; }
+  .scene-switcher { left: 17px; right: 17px; bottom: 18px; grid-template-columns: 38px minmax(0, 1fr) 38px; }
+  .scene-arrow { width: 38px; height: 38px; }
+  .scene-rail { display: flex; overflow-x: auto; scrollbar-width: none; }
+  .scene-rail::-webkit-scrollbar { display: none; }
+  .scene-tab { flex: 0 0 58px; height: 46px; }
+  .companion-presence { top: 66px; right: 17px; width: 42vw; }
+  .companion-presence small { display: none; }
+  .companion-presence div { margin-top: 0; }
+  .companion-presence span { padding: 4px 6px; font-size: 6px; }
+  .artwork-focus { top: auto; right: 17px; bottom: 82px; width: min(210px, 54vw); padding: 12px; }
+  .artwork-focus h2 { font-size: 17px; }
+  .artwork-focus button span { max-width: 150px; }
+  .conversation-panel { left: 17px; right: 17px; bottom: 78px; width: auto; }
+  .conversation-log { max-height: 145px; }
+  .mobile-controls { left: 17px; bottom: 82px; display: grid; grid-template-columns: repeat(3, 38px); grid-template-rows: repeat(2, 38px); gap: 4px; }
+  .mobile-controls button { border: 1px solid var(--line); border-radius: 4px; background: rgba(8, 7, 10, .58); backdrop-filter: blur(12px); font-size: 16px; touch-action: none; }
+  .mobile-controls button[data-control="forward"] { grid-column: 2; }
+  .mobile-controls button[data-control="left"] { grid-column: 1; grid-row: 2; }
+  .mobile-controls button[data-control="back"] { grid-column: 2; grid-row: 2; }
+  .mobile-controls button[data-control="right"] { grid-column: 3; grid-row: 2; }
+  .immersive-footer { display: none; }
+}
+
+@media (max-height: 620px) and (orientation: landscape) {
+  .scene-copy h1 { font-size: 25px; }
+  .scene-copy span { display: none; }
+  .artwork-focus { top: auto; bottom: 70px; }
+  .conversation-panel { bottom: 68px; }
+  .scene-switcher { bottom: 14px; }
+  .mobile-controls { bottom: 68px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}

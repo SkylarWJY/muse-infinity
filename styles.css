@@ -50,6 +50,7 @@ body[data-stage="threshold"] #world { opacity:.14; mix-blend-mode:multiply; }
 .chapter i { width: 42px; height: 1px; background: var(--hairline); }
 .top-actions { display: flex; gap: 17px; align-items: center; }
 .icon-button, .quiet-button { border: 0; background: transparent; cursor: pointer; padding: 7px; font-size: 9px; letter-spacing: .14em; }
+.quiet-link { color:inherit; text-decoration:none; }
 .icon-button { font-size: 17px; }
 
 #experience { position: fixed; z-index: 10; inset: 0; display: grid; place-items: center; padding: 80px 7vw 70px; perspective: 1100px; }

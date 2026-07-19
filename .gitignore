@@ -5,6 +5,7 @@ node_modules/
 !.env.example
 dist/
 coverage/
+outputs/
 *.log
 assets/generated/turnarounds/local-ip-only/
 tmp/

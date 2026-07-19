@@ -63,8 +63,9 @@ The runtime does not require an MCP server. MCP is useful for development-time d
   - `GET /api/tripo/tasks/:taskId` for progress and output polling.
   - `POST /api/tripo/rig-check`, `/api/tripo/rig`, and `/api/tripo/retarget` for optional character animation.
 - Model generation and rigging are explicit actions because they consume credits. Completed GLB URLs are temporary and must be downloaded to durable storage before they expire.
+- `npm run tripo:characters -- --dry-run --all` performs the local 32-view crop and request preview without contacting Tripo. Paid batch execution requires the separate `--submit --confirm-upload` flags, persists progress after every upload, resumes submitted task polling, and gates `--all` behind a validated Claude Monet canary.
 - Every Tripo generation, task, rigging and retargeting route requires `Authorization: Bearer <INTEGRATION_ADMIN_TOKEN>`. The read-only character manifest remains public.
-- The task client follows Tripo OpenAPI v2, uses `P1-20260311` for new multiview jobs, and defaults rig checks/rigging to `v2.5-20250123`. Both values can be overridden server-side. The bundled split images are never submitted automatically.
+- The task client follows Tripo OpenAPI v3, uses `tripo-p1` for new multiview jobs, uploads local images through `/v3/files`, and polls `/v3/tasks/:id`. The bundled split images are never submitted automatically.
 
 ## Connection status
 

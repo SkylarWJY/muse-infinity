@@ -14,12 +14,23 @@ const publicFiles = new Set([
   "index.html",
   "app.js",
   "styles.css",
+  "3d.html",
+  "3d.js",
+  "3d.css",
   "worlds.json",
   "services/museumCollections.js",
   "services/voiceConversation.js",
   "services/worldLabs.js"
 ]);
-const publicDirectories = ["assets/", "config/", "lib/", "node_modules/three/build/", "node_modules/three/examples/jsm/"];
+const publicDirectories = [
+  "assets/",
+  "config/",
+  "lib/",
+  "node_modules/three/build/",
+  "node_modules/three/examples/jsm/",
+  "node_modules/@sparkjsdev/spark/dist/",
+  "node_modules/@dimforge/rapier3d-compat/"
+];
 const mime = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
@@ -29,7 +40,10 @@ const mime = {
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
-  ".webp": "image/webp"
+  ".webp": "image/webp",
+  ".glb": "model/gltf-binary",
+  ".spz": "application/octet-stream",
+  ".wasm": "application/wasm"
 };
 
 const artworkCache = new Map();
